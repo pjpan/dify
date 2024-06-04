@@ -476,3 +476,8 @@ networks:
   ssrf_proxy_network:
     driver: bridge
     internal: true
+build:
+  context: .
+  args:
+    - http_proxy=10.110.63.27:8080
+    - https_proxy=10.110.63.27:8080
