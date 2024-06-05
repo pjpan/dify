@@ -37,6 +37,7 @@ services:
       # Url is signed and has expiration time.
       FILES_URL: ''
       CHECK_UPDATE_URL: ''
+      HOSTED_FETCH_APP_TEMPLATES_MODE: 'builtin'
       # File Access Time specifies a time interval in seconds for the file to be accessed.
       # The default value is 300 seconds.
       FILES_ACCESS_TIMEOUT: 300
@@ -173,8 +174,8 @@ services:
       SSRF_PROXY_HTTPS_URL: 'http://ssrf_proxy:3128'
       # Indexing configuration
       INDEXING_MAX_SEGMENTATION_TOKENS_LENGTH: 1000
-      HTTP_PROXY: '10.110.63.27:8080'
-      HTTPS_PROXY: '10.110.63.27:8080'
+      HTTP_PROXY: 'http://host.docker.internal:8080'
+      HTTPS_PROXY: 'http://host.docker.internal:8080'
     depends_on:
       - db
       - redis
@@ -182,8 +183,8 @@ services:
       # Mount the storage directory to the container, for storing user files.
       - ./volumes/app/storage:/app/api/storage
     # uncomment to expose dify-api port to host
-    ports:
-       - "5001:5001"
+#    ports:
+#       - "5001:5001"
     networks:
       - ssrf_proxy_network
       - default
